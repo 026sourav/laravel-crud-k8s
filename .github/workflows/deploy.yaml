@@ -23,7 +23,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD}}
 
        - name: Build & Push Docker Image
-         run: docker build -t ${{secrets.DOCKER_REPO}}:latest .
+         run: docker build -t ${{ secrets.DOCKER_REPO }}:latest .
 
        - name: Push image
-         run: docker push ${{secrets.DOCKER_REPO}}:latest
+         run: docker push ${{ secrets.DOCKER_REPO }}:latest
