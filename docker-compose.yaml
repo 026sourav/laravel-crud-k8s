@@ -1,0 +1,46 @@
+version: "3.8"
+
+volumes:
+    laravel-mysql-data:
+
+
+networks:
+    laravel-network:
+      driver: bridge
+
+services:
+
+  
+
+
+  mysql: 
+    image: mysql:5.7
+    container_name: mysql-container
+    healthcheck:
+      test: ["CMD","mysqladmin", "ping", "-h", "localhost" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - laravel-mysql-data:/var/lib/mysql
+    networks:
+      - laravel-network 
+
+  app:
+     image: sourav1911/laravel-crud-app:latest
+     container_name: laravel-container
+     ports:
+       - "8000:80"
+     volumes:
+       - ./:/var/www/html
+     networks:
+       - laravel-network
+     depends_on:
+       - mysql
+
+
+
