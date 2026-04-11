@@ -2,7 +2,7 @@ version: "3.8"
 
 volumes:
     laravel-mysql-data:
-
+    
 
 networks:
     laravel-network:
@@ -13,22 +13,20 @@ services:
   
 
 
-  mysql: 
-    image: mysql:5.7
-    container_name: mysql-container
-    healthcheck:
-      test: ["CMD","mysqladmin", "ping", "-h", "localhost" ]
-      interval: 5s
-      timeout: 5s
-      retries: 5
-      start_period: 10s
-    restart: unless-stopped
-    env_file:
-      - .env
-    volumes:
-      - laravel-mysql-data:/var/lib/mysql
-    networks:
-      - laravel-network 
+  mysql:
+   image: mysql:5.7
+   container_name: mysql-container
+   restart: unless-stopped
+   environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: laravel
+    MYSQL_USER: laravel
+    MYSQL_PASSWORD: secret
+   volumes:
+    - laravel-mysql-data:/var/lib/mysql
+   networks:
+    - laravel-network
+
 
   app:
      image: sourav1911/laravel-crud-app:latest
