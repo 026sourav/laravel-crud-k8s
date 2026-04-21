@@ -18,3 +18,32 @@ Make sure that you have setup the environment properly. You will need minimum PH
 6. Run migrations `php artisan migrate`
 7. Start local server by executing `php artisan serve`
 8. Visit here [http://127.0.0.1:8000/products](http://127.0.0.1:8000/products) to test the application
+
+
+
+
+
+
+⚙️ Environment Setup & Cleanup
+🧰 Required Tools
+
+Make sure the following are installed:
+
+Docker
+Docker Compose
+Verify Installation
+docker --version
+docker ps
+docker compose version   # or docker-compose --version
+🧹 Clean Docker Environment
+
+Before starting, ensure a clean setup:
+
+Remove all containers
+docker rm -f $(docker ps -aq)
+Remove all images
+docker rmi $(docker images -q)
+Remove unused resources
+docker system prune -a
+Remove unused networks
+docker network prune

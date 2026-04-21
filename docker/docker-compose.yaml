@@ -14,14 +14,12 @@ services:
 
 
   mysql:
-   image: mysql:5.7
+   image: mysql:8
    container_name: mysql-container
    restart: unless-stopped
    environment:
     MYSQL_ROOT_PASSWORD: root
     MYSQL_DATABASE: laravel
-    MYSQL_USER: laravel
-    MYSQL_PASSWORD: secret
    volumes:
     - laravel-mysql-data:/var/lib/mysql
    networks:
@@ -29,15 +27,13 @@ services:
 
 
   app:
-     image: sourav1911/laravel-crud-app:latest
-     container_name: laravel-container
-     ports:
+    image: sourav1911/laravel-app:v2
+    container_name: laravel-container
+    ports:
        - "8000:80"
-     volumes:
-       - ./:/var/www/html
-     networks:
+    networks:
        - laravel-network
-     depends_on:
+    depends_on:
        - mysql
 
 

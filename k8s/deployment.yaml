@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: laravel-crud-container
-          image: sourav1911/laravel-crud-app
+          image: sourav1911/laravel-app:v2
           ports: 
           - containerPort: 80
 
