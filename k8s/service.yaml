@@ -4,10 +4,9 @@ metadata:
   name: crud-service
   namespace: laravel-crud
 spec:
-  type: NodePort
+  type: ClusterIP 
   selector:
     app: laravel-crud
   ports:
     - port: 80
       targetPort: 80
-      nodePort: 30008

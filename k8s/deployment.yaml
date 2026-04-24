@@ -13,9 +13,11 @@ spec:
       labels:
         app: laravel-crud
     spec:
+      serviceAccountName: laravel-sa
       containers:
         - name: laravel-crud-container
           image: sourav1911/laravel-app:v2
+          imagePullPolicy: Always
           ports: 
           - containerPort: 80
 

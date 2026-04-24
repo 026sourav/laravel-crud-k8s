@@ -3,10 +3,13 @@ kind: Ingress
 metadata: 
  name: crud-ingress
  namespace: laravel-crud
+ annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
 spec:
+  ingressClassName: alb
   rules:
-  - host: laravel.crud
-    http:
+  - http:
        paths:
        - path: /
          pathType: Prefix
